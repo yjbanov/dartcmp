@@ -1,0 +1,14 @@
+name: dartcmp
+version: 0.0.1
+description: Compares two Dart packages and reports the differences.
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  analyzer: any
+  path: any
+  args: any
+
+dev_dependencies:
+  test: ^1.0.0
