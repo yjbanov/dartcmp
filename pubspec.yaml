@@ -9,6 +9,7 @@ dependencies:
   analyzer: any
   path: any
   args: any
+  mustache: any
 
 dev_dependencies:
   test: ^1.0.0
