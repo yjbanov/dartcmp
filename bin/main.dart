@@ -165,7 +165,7 @@ Map<String, LibrarySummary> _flattenAndParse(
       // Ignore.
       continue;
     }
-    result[relativePath] = LibrarySummary.parse(file, relativePath);
+    result[relativePath] = LibrarySummary.parse(file, relativePath: relativePath);
   }
   return result;
 }
