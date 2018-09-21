@@ -82,6 +82,14 @@ const html = '''
     <doneish style="width: {{classes.doneish}}%">{{classes.doneish}}%</doneish>
   </t-progress>
 
+  <h2>Tests</h2>
+
+  <t-progress>
+    <done style="width: {{testFiles.done}}%">{{testFiles.done}}%</done>
+    <todo style="width: {{testFiles.todo}}%">{{testFiles.todo}}%</todo>
+    <doneish style="width: {{testFiles.doneish}}%">{{testFiles.doneish}}%</doneish>
+  </t-progress>
+
   <h1>File delta</h1>
 
   <row>
@@ -170,6 +178,46 @@ const html = '''
           <td>{{.}}</td>
         </tr>
         {{/extraClasses}}
+      </table>
+    </column>
+  </row>
+
+  <h1>Test delta</h1>
+
+  <row>
+    <column>
+      <h2>Matching tests ({{matchingTestFiles.length}})</h2>
+
+      <table class="matching">
+        {{#matchingTestFiles}}
+        <tr>
+          <td>{{.}}</td>
+        </tr>
+        {{/matchingTestFiles}}
+      </table>
+    </column>
+
+    <column>
+      <h2>Missing tests ({{missingTestFiles.length}})</h2>
+
+      <table class="missing">
+        {{#missingTestFiles}}
+        <tr>
+          <td>{{.}}</td>
+        </tr>
+        {{/missingTestFiles}}
+      </table>
+    </column>
+
+    <column>
+      <h2>Extra tests ({{extraTestFiles.length}})</h2>
+
+      <table class="extra">
+        {{#extraTestFiles}}
+        <tr>
+          <td>{{.}}</td>
+        </tr>
+        {{/extraTestFiles}}
       </table>
     </column>
   </row>
