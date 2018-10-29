@@ -141,17 +141,30 @@ class _LibrarySummaryCollector extends RecursiveAstVisitor<void> {
 
   @override
   void visitClassDeclaration(ClassDeclaration node) {
+    if (_visitClassOrMixinDeclaration(node)) {
+      super.visitClassDeclaration(node);
+    }
+  }
+
+  @override
+  void visitMixinDeclaration(MixinDeclaration node) {
+    if (_visitClassOrMixinDeclaration(node)) {
+      super.visitMixinDeclaration(node);
+    }
+  }
+
+  bool _visitClassOrMixinDeclaration(ClassOrMixinDeclaration node) {
     _flushLatestClassData();
 
     if (node.name.name.startsWith('_')) {
       // Skip private members
-      return;
+      return false;
     }
 
     className = node.name.name;
     methodNames = <String>[];
     fieldNames = <String>[];
-    super.visitClassDeclaration(node);
+    return true;
   }
 
   void _flushLatestClassData() {
